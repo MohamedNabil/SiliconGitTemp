@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.siliconnile</groupId>
+    <artifactId>EshtaWebTemp</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>WebApp Root POM</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <spring.version>3.1.3.RELEASE</spring.version>
+        <junit.version>4.11</junit.version>
+        <jdk.version>1.6</jdk.version>
+    </properties>
+
+    
+    <modules>
+        <module>EshtaWebTemp.dao</module>
+        <module>EshtaWebTemp.dao-impl</module>
+        <module>EshtaWebTemp.domain</module>
+        <module>EshtaWebTemp.service</module>
+        <module>EshtaWebTemp.web</module>
+        
+        <module>jetty-conf</module>
+        <module>liquibase</module>
+    </modules>
+    
+
+    <dependencies>
+
+        <!-- Spring 3 dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>org.springframework.orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.pearlox</groupId>
+            <artifactId>com.pearlox.framework</artifactId>
+            <version>0.0.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>com.springsource.org.postgresql.jdbc4</artifactId>
+            <version>8.3.604</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>com.springsource.freemarker</artifactId>
+            <version>2.3.15</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlets</artifactId>
+            <version>8.1.11.v20130520</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.11.v20130520</version>
+                <configuration>
+                    <jettyConfig>${basedir}/jetty-conf/target/classes/etc/jetty.xml</jettyConfig>
+                    <webAppSourceDirectory>${basedir}/EshtaWebTemp.web/target/EshtaWebTemp.web-1.0-SNAPSHOT</webAppSourceDirectory>
+                    <classesDirectory>${basedir}/EshtaWebTemp.web/target/classes</classesDirectory>
+                    <war>${basedir}/EshtaWebTemp.web/target/EshtaWebTemp.web-1.0-SNAPSHOT.war</war>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                    </webApp>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <stopKey>foo</stopKey>
+                    <stopPort>9999</stopPort>
+                </configuration>            
+            </plugin>
+
+
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>pearlox.repository</id>
+            <name>pearlox repository releases</name>
+            <url>http://repositories.pashacode.com/artifactory/repo</url>
+        </repository>
+    </repositories>
+
+</project>
