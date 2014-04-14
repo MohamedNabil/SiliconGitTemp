@@ -13,5 +13,43 @@
         </createTable>
     </changeSet>
 
+	
+    <changeSet id="2" author="M.Nabil">
+        <createTable tableName="employee" schemaName="public">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(256)"/>
+            <column name="age" type="int"/>
+        </createTable>
+        
+      <insert tableName="employee">
+      <column name="name" value="mohamed"/>
+      <column name="age" value="24"/>
+      </insert>
+      
+              
+      <insert tableName="employee">
+      <column name="name" value="mohamed"/>
+      <column name="age" value="24"/>
+      </insert>
+      
+              
+      <insert tableName="employee">
+      <column name="name" value="morsy"/>
+      <column name="age" value="24"/>
+      </insert>
+      
+              
+      <insert tableName="employee">
+      <column name="name" value="Bassam"/>
+      <column name="age" value="23"/>
+      </insert>
+              
+      <insert tableName="employee">
+      <column name="name" value="Ahmed"/>
+      <column name="age" value="23"/>
+      </insert>
+    </changeSet>
 </databaseChangeLog>
 

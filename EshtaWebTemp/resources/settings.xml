@@ -7,9 +7,9 @@
         <profile>
             <id>local</id>
             <properties>
-                <settings.db.url>jdbc:postgresql://localhost:5432/testdb</settings.db.url>
-                <settings.db.user>testdb</settings.db.user>
-                <settings.db.password>testdb</settings.db.password>
+                <settings.db.url>jdbc:postgresql://localhost:5432/eshtaweb</settings.db.url>
+                <settings.db.user>root</settings.db.user>
+                <settings.db.password>123</settings.db.password>
                 
                 <socket.port.bio>8090</socket.port.bio>
                 <socket.port.nio>8091</socket.port.nio>
